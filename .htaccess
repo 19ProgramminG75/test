@@ -1,0 +1,28 @@
+<IfModule mod_headers.c>
+
+Options +MultiViews
+
+RewriteBase /
+
+## Remove extensions
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+## RewriteEngine On
+
+## RewriteCond %{REQUEST_FILENAME} !-f
+## RewriteCond %{REQUEST_FILENAME} !-d
+
+## RewriteRule ^index/(.*)$ index.php?$1 [L,QSA]
+
+ErrorDocument 404 /404.php
+#ErrorDocument 403 /403.html
+#ErrorDocument 500 /500.html
+
+Options -Indexes
+## ErrorDocument 403 http://spotd.test/404.php
+## ErrorDocument 500 http://spotd.test/
+
+</IfModule>
+FileETag None
